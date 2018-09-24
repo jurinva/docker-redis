@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+# source: https://gist.github.com/gregorymostizky/794901
+
+set timeout 5
+spawn telnet [lindex $argv 0] [lindex $argv 1]
+expect "Connected"
+send "PING\n"
+expect "+PONG"
+send "QUIT"
+
+#usage: expect redis.expect <host> <port>
