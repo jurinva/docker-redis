@@ -6,15 +6,17 @@ FROM alpine
 MAINTAINER jurinva <jurinva@gmail.com>
 
 # Update System and Install Redis
-RUN apk update && apk add redis bash sed
+RUN apk update && apk add redis
 
 # Volumes
-VOLUME ['/tmp/data']
+#VOLUME /data
+
+#WORKDIR /tmp/data
 
 # Ports
-EXPOSE 6379
+#EXPOSE 6379
 
 # Run Command
-CMD /bin/redis-server /etc/redis.conf
+ENTRYPOINT ["/usr/bin/redis-server", "/etc/redis.conf"]
 
 
